@@ -14,6 +14,19 @@ from launch_ros.parameter_descriptions import ParameterValue
 def generate_launch_description():
     bumperbot_description = get_package_share_directory("bumperbot_description")
 
+    default_world = os.path.join(
+        get_package_share_directory("bumperbot_description"),
+        'worlds',
+        'empty.world'
+        )    
+    
+    world = LaunchConfiguration('world')
+    world_arg = DeclareLaunchArgument(
+        'world',
+        default_value=default_world,
+        description='World to load'
+        )
+
     model_arg = DeclareLaunchArgument(name="model", default_value=os.path.join(
                                         bumperbot_description, "urdf", "bumperbot.urdf.xacro"
                                         ),
@@ -48,11 +61,8 @@ def generate_launch_description():
 
     gazebo = IncludeLaunchDescription(
                 PythonLaunchDescriptionSource([os.path.join(
-                    get_package_share_directory("ros_gz_sim"), "launch"), "/gz_sim.launch.py"]),
-                launch_arguments=[
-                    ("gz_args", [" -v 4", " -r", " empty.sdf"]
-                    )
-                ]
+                    get_package_share_directory('ros_gz_sim'), 'launch', 'gz_sim.launch.py')]),
+                launch_arguments={'gz_args': ['-r -v4 ', world], 'on_exit_shutdown': 'true'}.items()
              )
 
     gz_spawn_entity = Node(
@@ -60,7 +70,25 @@ def generate_launch_description():
         executable="create",
         output="screen",
         arguments=["-topic", "robot_description",
-                   "-name", "bumperbot"],
+                   "-name", "bumperbot"
+                    "-x", "0.0",  # Set your desired x position
+                    "-y", "0.0",  # Set your desired y position
+                    "-z", "0.0",  # Set your desired z position
+                    "-R", "0.0",  # Set your desired roll
+                    "-P", "0.0",  # Set your desired pitch
+                    "-Y", "-1.57"  # Set your desired yaw
+                   ],
+    )
+
+    gz_spawn_sdf_model = Node(
+        package="ros_gz_sim",
+        executable="create",
+        output="screen",
+        arguments=[
+            "-file", os.path.join(bumperbot_description, "models", "maze_qr_codes", "model.sdf"),
+            "-name", "my_qr_maze_model",  # Name for your model in Gazebo
+            "-x", "0", "-y", "0", "-z", "0"  # Adjust position as needed
+        ]
     )
 
     gz_ros2_bridge = Node(
@@ -75,11 +103,33 @@ def generate_launch_description():
         ]
     )
 
+    bridge_params = os.path.join(get_package_share_directory("bumperbot_description"),'config','gz_bridge.yaml')
+    ros_gz_bridge = Node(
+        package="ros_gz_bridge",
+        executable="parameter_bridge",
+        arguments=[
+            '--ros-args',
+            '-p',
+            f'config_file:={bridge_params}',
+        ]
+    )
+
+    gz_ros2_image_bridge = Node(
+        package="ros_gz_image",
+        executable="image_bridge",
+        arguments=["/camera/image_raw"],
+        output='screen',
+    )
+
     return LaunchDescription([
         model_arg,
         gazebo_resource_path,
         robot_state_publisher_node,
+        world_arg,
         gazebo,
         gz_spawn_entity,
-        gz_ros2_bridge
+        gz_spawn_sdf_model,
+        gz_ros2_bridge,
+        ros_gz_bridge,
+        gz_ros2_image_bridge,
     ])

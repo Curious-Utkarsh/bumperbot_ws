@@ -6,6 +6,7 @@ from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument
 from launch.substitutions import LaunchConfiguration
 from launch_ros.actions import Node
+from launch.actions import IncludeLaunchDescription
 
 
 def generate_launch_description():
@@ -14,16 +15,20 @@ def generate_launch_description():
                                       description="Use simulated time"
     )
 
-    joy_teleop = Node(
-        package="joy_teleop",
-        executable="joy_teleop",
-        parameters=[os.path.join(get_package_share_directory("bumperbot_controller"), "config", "joy_teleop.yaml"),
-                    {"use_sim_time": LaunchConfiguration("use_sim_time")}],
+    joy_teleop = IncludeLaunchDescription(
+        os.path.join(
+            get_package_share_directory("teleop_twist_joy"),
+            "launch",
+            "teleop-launch.py"
+        ),
+        launch_arguments={
+            "use_sim_time": "False"
+        }.items()
     )
 
     joy_node = Node(
-        package="joy",
-        executable="joy_node",
+        package="bumperbot_py_examples",
+        executable="joystick",
         name="joystick",
         parameters=[os.path.join(get_package_share_directory("bumperbot_controller"), "config", "joy_config.yaml"),
                     {"use_sim_time": LaunchConfiguration("use_sim_time")}]
@@ -33,6 +38,6 @@ def generate_launch_description():
         [
             use_sim_time_arg,
             joy_teleop,
-            joy_node
+            joy_node,
         ]
     )

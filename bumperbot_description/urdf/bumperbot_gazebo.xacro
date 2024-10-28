@@ -4,6 +4,7 @@
 
   <!-- Wheels -->
   <gazebo reference="wheel_left_link">
+    <material>Gazebo/Red</material>
     <mu1>1000000000000000.0</mu1>
     <mu2>1000000000000000.0</mu2>
     <kp>1000000000000.0</kp>
@@ -14,6 +15,7 @@
   </gazebo>
 
   <gazebo reference="wheel_right_link">
+    <material>Gazebo/Red</material>
     <mu1>1000000000000000.0</mu1>
     <mu2>1000000000000000.0</mu2>
     <kp>1000000000000.0</kp>
@@ -25,6 +27,7 @@
     
   <!-- Caster Wheels -->
   <gazebo reference="caster_rear_link">
+    <material>Gazebo/Red</material>
     <mu1>0.1</mu1>
     <mu2>0.1</mu2>
     <kp>1000000.0</kp>
@@ -34,6 +37,7 @@
   </gazebo>
     
   <gazebo reference="caster_front_link">
+    <material>Gazebo/Red</material>
     <mu1>0.1</mu1>
     <mu2>0.1</mu2>
     <kp>1000000.0</kp>
@@ -49,8 +53,7 @@
       <plugin filename="ign_ros2_control-system" name="ign_ros2_control::IgnitionROS2ControlPlugin">
         <parameters>$(find bumperbot_controller)/config/bumperbot_controllers.yaml</parameters>
       </plugin>
-      <plugin filename="ignition-gazebo-imu-system" name="ignition::gazebo::systems::Imu">
-      </plugin>
+      <plugin filename="ignition-gazebo-imu-system" name="ignition::gazebo::systems::Imu"></plugin>
     </xacro:if>
 
     <!-- ROS 2 Iron or above -->
@@ -65,6 +68,7 @@
 
   <!-- IMU -->
   <gazebo reference="imu_link">
+    <material>Gazebo/Red</material>
     <sensor name="imu" type="imu">
         <always_on>true</always_on>
         <update_rate>100</update_rate>
