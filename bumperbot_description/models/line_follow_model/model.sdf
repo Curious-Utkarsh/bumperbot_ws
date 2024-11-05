@@ -18,8 +18,8 @@
         <pose>0 0 0 0 -0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://vision_rpi_bot/meshes/line_to_follow.dae</uri>
-            <scale>1 1 1</scale>
+            <uri>model://bumperbot_description/meshes/line_to_follow.dae</uri>
+            <scale>1 1 0.2</scale>
           </mesh>
         </geometry>
         <!-- <material>
@@ -39,8 +39,8 @@
         <pose>0 0 0 0 -0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://vision_rpi_bot/meshes/line_to_follow.dae</uri>
-            <scale>1 1 1</scale>
+            <uri>model://bumperbot_description/meshes/line_to_follow.dae</uri>
+            <scale>1 1 0.2</scale>
           </mesh>
         </geometry>
         <surface>

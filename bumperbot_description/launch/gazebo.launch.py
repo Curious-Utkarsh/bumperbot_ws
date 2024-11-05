@@ -76,17 +76,27 @@ def generate_launch_description():
                     "-z", "0.0",  # Set your desired z position
                     "-R", "0.0",  # Set your desired roll
                     "-P", "0.0",  # Set your desired pitch
-                    "-Y", "-1.57"  # Set your desired yaw
+                    "-Y", "0.0"  # Set your desired yaw
                    ],
     )
 
+    # gz_spawn_sdf_model = Node(
+    #     package="ros_gz_sim",
+    #     executable="create",
+    #     output="screen",
+    #     arguments=[
+    #         "-file", os.path.join(bumperbot_description, "models", "maze_qr_codes", "model.sdf"),
+    #         "-name", "my_qr_maze_model",  # Name for your model in Gazebo
+    #         "-x", "0", "-y", "0", "-z", "0"  # Adjust position as needed
+    #     ]
+    # )
     gz_spawn_sdf_model = Node(
         package="ros_gz_sim",
         executable="create",
         output="screen",
         arguments=[
-            "-file", os.path.join(bumperbot_description, "models", "maze_qr_codes", "model.sdf"),
-            "-name", "my_qr_maze_model",  # Name for your model in Gazebo
+            "-file", os.path.join(bumperbot_description, "models", "line_follow_model", "model.sdf"),
+            "-name", "my_line_follow_model",  # Name for your model in Gazebo
             "-x", "0", "-y", "0", "-z", "0"  # Adjust position as needed
         ]
     )
