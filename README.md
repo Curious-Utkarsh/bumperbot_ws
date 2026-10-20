@@ -17,6 +17,8 @@ My B.Tech final-year robot (late 2024) and my first robot running ROS 2 on real 
 </tr>
 </table>
 
+On LinkedIn (Oct–Dec 2024): [robot complete](https://www.linkedin.com/feed/update/urn:li:activity:7254822495826923520/) · [teleoperation with RViz twin](https://www.linkedin.com/feed/update/urn:li:activity:7256238442001412096/) · [QR maze solver](https://www.linkedin.com/feed/update/urn:li:activity:7256869923757449216/) · [line follower, real and Gazebo](https://www.linkedin.com/feed/update/urn:li:activity:7259421708418232320/) · [RPLidar A1 bring-up](https://www.linkedin.com/feed/update/urn:li:activity:7267394254312751104/) · [twist_mux in Gazebo](https://www.linkedin.com/feed/update/urn:li:activity:7270648174011133952/)
+
 ## Key features
 
 - **Firmware** — Arduino PID speed control per wheel with interrupt-driven encoders and an L298N driver.
