@@ -40,7 +40,7 @@ ROS 2 Humble · ros2_control · robot_localization · Gazebo · RViz · OpenCV �
 
 ```bash
 mkdir -p ~/bumperbot_ws/src && cd ~/bumperbot_ws/src
-git clone https://github.com/Curious-Utkarsh/bumperbot_ws.git .
+git clone https://github.com/Curious-Utkarsh/bumperbot-diff-drive-robot.git .
 cd ~/bumperbot_ws && rosdep install --from-paths src --ignore-src -r -y
 colcon build --symlink-install && source install/setup.bash
 
@@ -50,8 +50,8 @@ ros2 launch bumperbot_bringup real_robot.launch.py          # real robot
 
 ## Related
 
-- [Mobi](https://github.com/Curious-Utkarsh/Indoor_Service_AMR) and [MechaBot](https://github.com/MechaMind-Labs/AMR-Mastery) — the larger robots built on this hardware-interface pattern
-- [Arduino joystick → ROS 2](https://github.com/MechaMind-Labs/Joystick_Module_Integration_with_ROS2) — serial hardware integration, taught as a workshop
+- [Mobi](https://github.com/Curious-Utkarsh/mobi-service-robot) and [MechaBot](https://github.com/MechaMind-Labs/AMR-Mastery) — the larger robots built on this hardware-interface pattern
+- [Arduino joystick → ROS 2](https://github.com/MechaMind-Labs/arduino-joystick-to-ros2) — serial hardware integration, taught as a workshop
 
 ## Credits
 
