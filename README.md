@@ -1,11 +1,11 @@
-# Final-Year Robot — Differential-Drive ROS 2 Robot with Sensor Fusion and Vision
+# Bumperbot — Differential-Drive ROS 2 Robot with Sensor Fusion and Vision
 
 [![ROS 2 Humble](https://img.shields.io/badge/ROS%202-Humble-22314E?logo=ros)](https://docs.ros.org/en/humble/)
 [![ros2_control](https://img.shields.io/badge/ros2__control-custom%20HW%20interface-555)](https://control.ros.org/humble/)
 [![Arduino](https://img.shields.io/badge/MCU-Arduino-00979D?logo=arduino)](https://www.arduino.cc/)
 [![Real hardware](https://img.shields.io/badge/runs%20on-real%20hardware-2EA44F)](#demo)
 
-My B.Tech final-year robot (late 2024) and my first robot running ROS 2 on real hardware. It is a two-wheel differential-drive robot with its own motor firmware, a `ros2_control` hardware interface, odometry corrected by a Kalman filter, joystick teleoperation with an RViz twin, and camera-based line following that runs both on the real robot and in Gazebo. I extended it with a QR-code maze solver in simulation.
+An independent project from late 2024: a two-wheel differential-drive robot with its own motor firmware, a `ros2_control` hardware interface, odometry corrected by a Kalman filter, joystick teleoperation with an RViz twin, and camera-based line following that runs both on the real robot and in Gazebo. I extended it with a QR-code maze solver in simulation.
 
 ## Demo
 
