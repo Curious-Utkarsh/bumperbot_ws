@@ -17,6 +17,8 @@ An independent project from late 2024: a two-wheel differential-drive robot with
 </tr>
 </table>
 
+Playlist: [ROS 2 Projects](https://www.youtube.com/playlist?list=PLVjFk3hP8Wm4)
+
 On LinkedIn (Oct–Dec 2024): [robot complete](https://www.linkedin.com/feed/update/urn:li:activity:7254822495826923520/) · [teleoperation with RViz twin](https://www.linkedin.com/feed/update/urn:li:activity:7256238442001412096/) · [QR maze solver](https://www.linkedin.com/feed/update/urn:li:activity:7256869923757449216/) · [line follower, real and Gazebo](https://www.linkedin.com/feed/update/urn:li:activity:7259421708418232320/) · [RPLidar A1 bring-up](https://www.linkedin.com/feed/update/urn:li:activity:7267394254312751104/) · [twist_mux in Gazebo](https://www.linkedin.com/feed/update/urn:li:activity:7270648174011133952/)
 
 ## Key features
